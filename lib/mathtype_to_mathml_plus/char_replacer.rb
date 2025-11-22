@@ -9,7 +9,7 @@ require "nokogiri"
 
 
 
-module MathTypeToMathML
+module MathTypeToMathMLPlus
   class CharReplacer
     UNSUPPORTED = "Unsupported (Char)"
 
@@ -202,117 +202,117 @@ module MathTypeToMathML
       0x3000..0x303F => { # range: Letterlike Symbols
         mathmode: "<mo>(CharHex)</mo>"
       },
-      0xE000..0xE900 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xE905..0xE90A => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xE90D..0xE921 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xE926..0xE92C => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xE92E..0xE931 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xE934..0xE939 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xE93C..0xE98E => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xE990..0xEA05 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xEA08..0xEA0A => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xEA0D..0xEA31 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xEA36..0xEA39 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xEA3C..0xEA3F => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xEA46..0xEB00 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xEB03..0xEB04 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xEB07..0xED09 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xED14..0xED15 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xED17..0xEE03 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xEE04..0xEE0C => {
-        textmode: UNSUPPORTED
-      },
-      0xEE0D..0xEE18 => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xEE1A..0xEEFF => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xEF09..0xEFFF => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xF000..0xF033 => {
-        textmode: UNSUPPORTED
-      },
-      0xF034..0xF07F => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xF080..0xF0B3 => {
-        textmode: UNSUPPORTED
-      },
-      0xF0B4..0xF0BF => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xF0C0..0xF0C9 => {
-        textmode: UNSUPPORTED
-      },
-      0xF0CA..0xF0FF => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
-      0xF100..0xF133 => {
-        textmode: UNSUPPORTED
-      },
-      0xF134..0xF8FF => {
-        mathmode: UNSUPPORTED,
-        textmode: UNSUPPORTED
-      },
+      # 0xE000..0xE900 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xE905..0xE90A => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xE90D..0xE921 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xE926..0xE92C => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xE92E..0xE931 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xE934..0xE939 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xE93C..0xE98E => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xE990..0xEA05 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xEA08..0xEA0A => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xEA0D..0xEA31 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xEA36..0xEA39 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xEA3C..0xEA3F => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xEA46..0xEB00 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xEB03..0xEB04 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xEB07..0xED09 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xED14..0xED15 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xED17..0xEE03 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xEE04..0xEE0C => {
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xEE0D..0xEE18 => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xEE1A..0xEEFF => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xEF09..0xEFFF => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xF000..0xF033 => {
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xF034..0xF07F => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xF080..0xF0B3 => {
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xF0B4..0xF0BF => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xF0C0..0xF0C9 => {
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xF0CA..0xF0FF => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xF100..0xF133 => {
+      #   textmode: UNSUPPORTED
+      # },
+      # 0xF134..0xF8FF => {
+      #   mathmode: UNSUPPORTED,
+      #   textmode: UNSUPPORTED
+      # },
       0xFB00..0xFB4F => { # range: Alphabetic Presentation Forms
         mathmode: "<mtext>(CharHex)</mtext>"
       },

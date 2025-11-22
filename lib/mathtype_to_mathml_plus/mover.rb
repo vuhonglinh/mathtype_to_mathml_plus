@@ -20,7 +20,7 @@ require "nokogiri"
 # Additionally, Mover inverts <emb>ellishments from <char><emb></emb></char> to
 # <emb><char></char></emb>.
 
-module MathTypeToMathML
+module MathTypeToMathMLPlus
   class Mover
     attr_reader :mathtype
     attr_accessor :last_preceding_siblings

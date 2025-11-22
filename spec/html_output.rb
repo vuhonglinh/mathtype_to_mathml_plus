@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require "mathtype_to_mathml"
+require "mathtype_to_mathml_plus"
 require "nokogiri"
 
 builder = Nokogiri::HTML::Builder.new do |html|
@@ -10,7 +10,7 @@ builder = Nokogiri::HTML::Builder.new do |html|
           div.h3 equation
           div.p "Output", "style" => "text-align: center;"
           div.p do |p|
-            p << MathTypeToMathML::Converter.new(equation).convert
+            p << MathTypeToMathMLPlus::Converter.new(equation).convert
           end
           expected_xml = "#{File.basename(equation, ".*")}.xml"
           expected = File.open("spec/fixtures/expected/" + expected_xml).read
