@@ -1,4 +1,4 @@
-require "mathtype_to_mathml_plus/version"
+require_relative "mathtype_to_mathml_plus/version"
 require "nokogiri"
 require "mathtype"
 require_relative "mathtype_to_mathml_plus/mover"
@@ -9,15 +9,8 @@ module MathTypeToMathMLPlus
     def initialize(mathtype)
       @xslt = Nokogiri::XSLT(File.open(path_to_xslt))
 
-    converter = Mathtype::Converter.new(mathtype)
-    doc = converter.xml.doc
+      @mathtype = Mathtype::Converter.new(mathtype).xml.doc
 
-      File.open("mathtype.log", "a") do |f|
-     f.puts "----- NEW LOG #{Time.now} -----"
-     f.puts doc.to_xml(indent: 2)
-    end
-
-      @mathtype = doc
       # Addresses lack of scaning mode in our translator. See "Mover" for more.
       mover = Mover.new(@mathtype)
       mover.move

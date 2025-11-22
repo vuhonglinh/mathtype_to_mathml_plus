@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require "mathtype_to_mathml_plus"
+require_relative "mathtype_to_mathml_plus"
 require "nokogiri"
 
 builder = Nokogiri::HTML::Builder.new do |html|
